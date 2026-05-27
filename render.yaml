@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: sagec-asset-hub-api
+    runtime: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLOUDINARY_CLOUD_NAME
+        fromEnv: CLOUDINARY_CLOUD_NAME
+      - key: CLOUDINARY_API_KEY
+        fromEnv: CLOUDINARY_API_KEY
+      - key: CLOUDINARY_API_SECRET
+        fromEnv: CLOUDINARY_API_SECRET
+      - key: MONGODB_URI
+        fromEnv: MONGODB_URI
+      - key: MONGODB_DB
+        value: sagec-hub
+
+  - type: static
+    name: sagec-asset-hub-ui
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        fromEnv: VITE_API_URL

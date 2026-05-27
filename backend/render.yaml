@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sagec-asset-hub-api
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLOUDINARY_CLOUD_NAME
+        fromEnv: CLOUDINARY_CLOUD_NAME
+      - key: CLOUDINARY_API_KEY
+        fromEnv: CLOUDINARY_API_KEY
+      - key: CLOUDINARY_API_SECRET
+        fromEnv: CLOUDINARY_API_SECRET
+      - key: MONGODB_URI
+        fromEnv: MONGODB_URI
+      - key: MONGODB_DB
+        value: sagec-hub
