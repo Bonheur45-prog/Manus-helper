@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Card, { SectionTitle, InfoRow } from '../components/Card.jsx'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+const rawApiUrl = import.meta.env.VITE_API_URL
+const cleanedApiUrl = rawApiUrl ? rawApiUrl.replace(/\/+$/, '') : ''
+const API_BASE = cleanedApiUrl ? cleanedApiUrl : 'http://localhost:3001'
 
 const colors = [
   { name: 'Primary Orange', hex: '#F15A22', role: 'Main accent, CTAs, logo' },

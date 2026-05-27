@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import Card, { SectionTitle } from '../components/Card.jsx'
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'https://sagec-asset-hub-api.onrender.com'
+const rawApiUrl = import.meta.env.VITE_API_URL
+const cleanedApiUrl = rawApiUrl ? rawApiUrl.replace(/\/+$/, '') : ''
+const BASE_URL = cleanedApiUrl || 'https://sagec-asset-hub-api.onrender.com'
 
 const endpoints = [
   {

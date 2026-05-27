@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Card, { SectionTitle } from '../components/Card.jsx'
 
 const rawApiUrl = import.meta.env.VITE_API_URL
-const API_BASE = rawApiUrl
-  ? /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(rawApiUrl)
-    ? rawApiUrl
-    : `http://${rawApiUrl}`
+const cleanedApiUrl = rawApiUrl ? rawApiUrl.replace(/\/+$/, '') : ''
+const API_BASE = cleanedApiUrl
+  ? /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(cleanedApiUrl)
+    ? cleanedApiUrl
+    : `http://${cleanedApiUrl}`
   : 'http://localhost:3001'
 
 const transformCloudinaryUrl = (url) => {

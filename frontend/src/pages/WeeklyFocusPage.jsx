@@ -14,7 +14,9 @@ const services = [
   { id: 'renovation-works',        label: 'Renovation Works' },
 ]
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+const rawApiUrl = import.meta.env.VITE_API_URL
+const cleanedApiUrl = rawApiUrl ? rawApiUrl.replace(/\/+$/, '') : ''
+const API_BASE = cleanedApiUrl ? cleanedApiUrl : 'http://localhost:3001'
 
 export default function WeeklyFocusPage() {
   const [focusId, setFocusId]   = useState('interior-design')
